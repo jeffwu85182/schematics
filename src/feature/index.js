@@ -81,7 +81,6 @@ function default_1(options) {
         options.path = options.path ? core_1.normalize(options.path) : options.path;
         options.module = find_module_1.findModuleFromOptions(host, options);
         var componentPath = "/" + options.sourceDir + "/" + 'pages' + "/" +
-            // (options.flat ? '' : stringUtils.dasherize(options.name) + '/') +
             stringUtils.dasherize(options.name) + '/' +
             stringUtils.dasherize(options.name) +
             '.component';
