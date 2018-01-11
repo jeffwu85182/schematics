@@ -42,7 +42,7 @@ function addDeclarationToNgModule(options) {
         //         declarationRecorder.insertLeft(change.pos, change.toAdd);
         //     }
         // }
-        host.commitUpdate(declarationRecorder);
+        // host.commitUpdate(declarationRecorder);
         if (options.export) {
             // Need to refresh the AST because we overwrote the file in the host.
             var text_1 = host.read(modulePath);
