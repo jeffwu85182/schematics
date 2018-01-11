@@ -1,0 +1,21 @@
+{
+  "name": "@ktbp/schematics",
+  "version": "0.0.1",
+  "description": "KTBP Schematics for Angular",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffwu85182/schematics.git"
+  },
+  "keywords": [
+    "Angular",
+    "Schematics",
+    "Angular CLI"
+  ],
+  "author": "Jeff Wu <crazy.alu@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeffwu85182/schematics/issues"
+  },
+  "homepage": "https://github.com/jeffwu85182/schematics#readme",
+  "schematics": "./collection.json"
+}

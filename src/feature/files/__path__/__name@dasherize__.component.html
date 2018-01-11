@@ -1,0 +1,8 @@
+
+<% if (!routing) { %><%= htmlTemplate %><% } else { %><p>
+  <%= dasherize(name) %> works!
+</p><% } %>
+
+<% if (routing) { %><%= htmlTemplate %><% } else { %><p>
+  <router-outlet></router-outlet>
+</p><% } %>
