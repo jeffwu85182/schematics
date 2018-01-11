@@ -1,5 +1,5 @@
 {
-  "name": "@ktbp/schematics",
+  "name": "@schematics/ktbp",
   "version": "0.0.1",
   "description": "KTBP Schematics for Angular",
   "repository": {

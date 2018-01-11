@@ -34,14 +34,14 @@ function addDeclarationToNgModule(options) {
             '.component';
         var relativePath = find_module_1.buildRelativePath(modulePath, componentPath);
         var classifiedName = stringUtils.classify(options.name + "Component");
-        var declarationChanges = ast_utils_1.addDeclarationToModule(source, modulePath, classifiedName, relativePath);
-        var declarationRecorder = host.beginUpdate(modulePath);
-        for (var _i = 0, declarationChanges_1 = declarationChanges; _i < declarationChanges_1.length; _i++) {
-            var change = declarationChanges_1[_i];
-            if (change instanceof change_1.InsertChange) {
-                declarationRecorder.insertLeft(change.pos, change.toAdd);
-            }
-        }
+        // var declarationChanges = ast_utils_1.addDeclarationToModule(source, modulePath, classifiedName, relativePath);
+        // var declarationRecorder = host.beginUpdate(modulePath);
+        // for (var _i = 0, declarationChanges_1 = declarationChanges; _i < declarationChanges_1.length; _i++) {
+        //     var change = declarationChanges_1[_i];
+        //     if (change instanceof change_1.InsertChange) {
+        //         declarationRecorder.insertLeft(change.pos, change.toAdd);
+        //     }
+        // }
         host.commitUpdate(declarationRecorder);
         if (options.export) {
             // Need to refresh the AST because we overwrote the file in the host.
@@ -89,6 +89,7 @@ function default_1(options) {
             options.state = find_module_1.buildRelativePath(componentPath, statePath);
         }
         var templateSource = schematics_1.apply(schematics_1.url('./files'), [
+            options.routing ? schematics_1.noop() : schematics_1.filter(function(path) { return !path.endsWith('-routing.module.ts'); }),
             options.spec ? schematics_1.noop() : schematics_1.filter(function (path) { return !path.endsWith('__spec.ts'); }),
             options.inlineStyle
                 ? schematics_1.filter(function (path) { return !path.endsWith('.__styleext__'); })
