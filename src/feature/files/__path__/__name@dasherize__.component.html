@@ -1,8 +1,5 @@
-
-<% if (!routing) { %><%= htmlTemplate %><% } else { %><p>
+<% if (!routing) { %>
   <%= dasherize(name) %> works!
-</p><% } %>
-
-<% if (routing) { %><%= htmlTemplate %><% } else { %><p>
-  <router-outlet></router-outlet>
-</p><% } %>
+    <% } else { %>
+      <router-outlet></router-outlet>
+      <% } %>
