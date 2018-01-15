@@ -9,7 +9,11 @@
 </div>
 <ktb-notification #notification></ktb-notification>
 <div *ngIf="isSuccess==true; else loadingFailed;" class="row">
-  <<%= dasherize(name) %>></<%= dasherize(name) %>>
+  <% if (!routing) { %>
+    <<%= dasherize(name) %>></<%= dasherize(name) %>>
+      <% } else { %>
+        <router-outlet></router-outlet>
+        <% } %>
 </div>
 <ng-template #loadingFailed>
   載入中...
