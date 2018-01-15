@@ -5,5 +5,4 @@ export interface Schema {
   module?: string;
   flat?: boolean;
   spec?: boolean;
-  routing?: boolean;
 }

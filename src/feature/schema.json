@@ -30,10 +30,6 @@
       "type": "boolean",
       "default": true,
       "description": "Specifies if a spec file is generated."
-    },
-    "routing": {
-      "type": "boolean",
-      "default": false
     }
   },
   "required": [
