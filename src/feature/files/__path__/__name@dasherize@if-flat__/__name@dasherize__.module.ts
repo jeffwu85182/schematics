@@ -5,9 +5,7 @@ import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.compone
 import { Router } from '@angular/router';
 import { CommonComponentsModule } from '../../components/common-components.module';
 import { TwdComponentsModule } from '../../components/twd-components.module';
-<% if (routing) { %>
-  import { <%= classify(name) %>RoutingModule } from './<%= dasherize(name) %>-routing.module';
-<% } %>
+import { <%= classify(name) %>RoutingModule } from './<%= dasherize(name) %>-routing.module';
 import { FeatureManager } from './feature-manager';
 
 // Optional Module
