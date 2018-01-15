@@ -1,19 +1,17 @@
 <div class="pageTitle">
-  <h3><%= dasherize(name) %></h3>
+  <h3>
+    <%= dasherize(name) %>
+  </h3>
 </div>
 <div class="row">
   <div class="col-md-12 mb-3">
-      <!-- STEP -->
-      <!-- <p-steps [model]="steps" [activeIndex]="fm.currentStep"></p-steps> -->
+    <!-- STEP -->
+    <!-- <p-steps [model]="steps" [activeIndex]="fm.currentStep"></p-steps> -->
   </div>
 </div>
 <ktb-notification #notification></ktb-notification>
 <div *ngIf="isSuccess==true; else loadingFailed;" class="row">
-  <% if (!routing) { %>
-    <<%= dasherize(name) %>></<%= dasherize(name) %>>
-      <% } else { %>
-        <router-outlet></router-outlet>
-        <% } %>
+  <router-outlet></router-outlet>
 </div>
 <ng-template #loadingFailed>
   載入中...

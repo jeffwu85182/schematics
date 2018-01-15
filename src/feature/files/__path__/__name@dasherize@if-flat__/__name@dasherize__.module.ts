@@ -16,9 +16,7 @@ import { SharedModule } from 'primeng/primeng';
 @NgModule({
   imports: [
     CommonModule,
-    <% if (routing) { %>
     <%= classify(name) %>RoutingModule,
-    <% } %>
     // fxComponentModule 若是外幣相關
     TwdComponentsModule, // 台幣相關，若是屬於台外幣 Feature 相關則兩個都會用到
     CommonComponentsModule,
