@@ -6,53 +6,43 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 
-import * as feature from '.';
-import * as proxy from '../../services/ktbpib-proxygen';
 import { MenuItem } from 'primeng/components/common/menuitem';
 import { Observable } from 'rxjs/Observable';
+import { FeatureManager } from './feature-manager';
+import { BankInfoClient } from '../../services/ktbpib-proxygen';
+import { HandleApiCall } from '../../services/handle-api-call';
+import { KtbNotificationLevel } from '../../components/ktb-notification/ktb-notification';
+import { KtbNotification } from '../../components/ktb-notification/ktb-notification';
+
+
 
 @Component({
   selector: 'feature-loader',
   templateUrl: './feature-loader.html',
   styleUrls: ['./<%= dasherize(name) %>.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [proxy.BankInfoClient]
+  providers: [BankInfoClient]
 })
 export class FeatureLoader implements OnInit {
-  @ViewChild('notification') notification: feature.KtbNotification;
+  @ViewChild('notification') notification: KtbNotification;
   steps: MenuItem[];
   isSuccess: boolean;
 
   constructor(
-    private fm: feature.FeatureManager,
-    private bankInfoClient: proxy.BankInfoClient,
-    private handleApiCall: feature.HandleApiCall
+    private fm: FeatureManager,
+    private bankInfoClient: BankInfoClient,
+    private handleApiCall: HandleApiCall
   ) {
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.fm.init();
     this.steps = [{ label: 'Step1' }, { label: 'Step2' }, { label: 'Step3' }];
-    await this.fm.loadFeature();
-    this.initResources();
+    this.fm.loadFeature().then(res => {
+      this.initResources();
+    });
   }
 
   initResources() {
-    return this.bankInfoClient.getAllBankInfo(false).forEach(rsp => {
-      this.handleApiCall.handleResponse(
-        rsp,
-        res => {
-          this.fm.allBankInfo = res.Result;
-          this.isSuccess = true;
-        },
-        (c, m) => {
-          this.notification.showNotification(
-            m,
-            feature.KtbNotificationLevel.danger
-          );
-          this.isSuccess = false;
-        }
-      );
-    });
   }
 }
