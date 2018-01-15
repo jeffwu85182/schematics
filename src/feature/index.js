@@ -89,7 +89,7 @@ function default_1(options) {
             options.state = find_module_1.buildRelativePath(componentPath, statePath);
         }
         var templateSource = schematics_1.apply(schematics_1.url('./files'), [
-            options.routing ? schematics_1.noop() : schematics_1.filter(function(path) { return !path.endsWith('-routing.module.ts'); }),
+            // options.routing ? schematics_1.noop() : schematics_1.filter(function(path) { return !path.endsWith('-routing.module.ts'); }),
             options.spec ? schematics_1.noop() : schematics_1.filter(function (path) { return !path.endsWith('__spec.ts'); }),
             options.inlineStyle
                 ? schematics_1.filter(function (path) { return !path.endsWith('.__styleext__'); })
