@@ -1,7 +1,7 @@
 import { FeatureLoader } from './feature-loader';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';
+import { <%= classify(name) %> } from './<%= dasherize(name) %>';
 import { Router } from '@angular/router';
 import { CommonComponentsModule } from '../../components/common-components.module';
 import { TwdComponentsModule } from '../../components/twd-components.module';
@@ -20,7 +20,7 @@ import { SharedModule } from 'primeng/primeng';
     CommonComponentsModule,
     SharedModule
   ],
-  declarations: [FeatureLoader, <%= classify(name) %>Component],
+  declarations: [FeatureLoader, <%= classify(name) %>],
   providers: [FeatureManager]
 })
 export class <%= classify(name) %>Module {}

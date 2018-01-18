@@ -1,18 +1,12 @@
 import { Injectable, Injector } from '@angular/core';
-import { <%= classify(name) %>VM } from './<%= dasherize(name) %>-vm';
-
-
-import { KtbFeatureManager } from '../../services/ktb-feature-manager';
 import { Router } from '@angular/router';
+import { KtbFeatureManager } from '@service/ktb-feature-manager';
 
 @Injectable()
 export class FeatureManager extends KtbFeatureManager {
     // 提供BasePage存取featureId
     featureId = "KTBPIB.<%= classify(name) %>";
     featureName = "<%= dasherize(name) %>";
-
-    public vm: <%= classify(name) %>VM; // 整個Feature需要使用的viewModel
-
     // Feature-scope共用資源
     allBankInfo: any; // 所有銀行代碼
 
@@ -28,7 +22,6 @@ export class FeatureManager extends KtbFeatureManager {
         router: Router,
     ) {
         super(injector, router);
-        this.vm = new <%= classify(name) %>VM(); //初始化ViewModel
     }
     //===== Base Class implements Start =====
     init() {

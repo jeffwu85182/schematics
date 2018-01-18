@@ -1,25 +1,18 @@
-import {
-  Component,
-  OnInit,
-  DoCheck,
-  ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
-
+import { Component, OnInit, DoCheck, ViewChild, ViewEncapsulation } from '@angular/core';
+import { BankInfoClient } from '@service/ktbpib-proxygen';
+import { HandleApiCall } from '@service/handle-api-call';
+import { KtbNotificationLevel } from '@component/ktb-notification/ktb-notification';
+import { KtbNotification } from '@component/ktb-notification/ktb-notification';
 import { MenuItem } from 'primeng/components/common/menuitem';
 import { Observable } from 'rxjs/Observable';
 import { FeatureManager } from './feature-manager';
-import { BankInfoClient } from '../../services/ktbpib-proxygen';
-import { HandleApiCall } from '../../services/handle-api-call';
-import { KtbNotificationLevel } from '../../components/ktb-notification/ktb-notification';
-import { KtbNotification } from '../../components/ktb-notification/ktb-notification';
 
 
 
 @Component({
   selector: 'feature-loader',
   templateUrl: './feature-loader.html',
-  styleUrls: ['./<%= dasherize(name) %>.component.scss'],
+  styleUrls: ['./<%= dasherize(name) %>.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [BankInfoClient]
 })

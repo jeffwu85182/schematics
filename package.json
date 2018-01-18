@@ -17,5 +17,8 @@
     "url": "https://github.com/jeffwu85182/schematics/issues"
   },
   "homepage": "https://github.com/jeffwu85182/schematics#readme",
-  "schematics": "./collection.json"
+  "schematics": "./collection.json",
+  "dependencies": {
+    "@angular-devkit/schematics": "^0.0.48"
+  }
 }
