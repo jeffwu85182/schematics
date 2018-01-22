@@ -1,11 +1,12 @@
 {
-  "name": "@schematics/ktbp",
-  "version": "0.0.6",
+  "name": "@ktbp/schematics",
+  "version": "0.0.8",
   "description": "KTBP Schematics for Angular",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && jasmine **/*_spec.js"
   },
+  "homepage": "https://github.com/jeffwu85182/schematics",
   "keywords": [
     "schematics"
   ],
@@ -19,5 +20,6 @@
     "@types/node": "^8.0.31",
     "jasmine": "^2.8.0",
     "typescript": "^2.5.2"
-  }
+  },
+  "private": false
 }
