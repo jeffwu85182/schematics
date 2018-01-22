@@ -1,24 +1,23 @@
 {
   "name": "@schematics/ktbp",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "KTBP Schematics for Angular",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jeffwu85182/schematics.git"
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && jasmine **/*_spec.js"
   },
   "keywords": [
-    "Angular",
-    "Schematics",
-    "Angular CLI"
+    "schematics"
   ],
   "author": "Jeff Wu <crazy.alu@outlook.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jeffwu85182/schematics/issues"
-  },
-  "homepage": "https://github.com/jeffwu85182/schematics#readme",
-  "schematics": "./collection.json",
+  "schematics": "./src/collection.json",
   "dependencies": {
-    "@angular-devkit/schematics": "^0.0.48"
+    "@angular-devkit/core": "^0.0.25",
+    "@angular-devkit/schematics": "^0.0.42",
+    "@types/jasmine": "^2.6.0",
+    "@types/node": "^8.0.31",
+    "jasmine": "^2.8.0",
+    "typescript": "^2.5.2"
   }
 }
