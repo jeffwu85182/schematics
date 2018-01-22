@@ -24,7 +24,14 @@
       "aliases": [ "f" ],
       "factory": "./src/feature",
       "schema": "./src/feature/schema.json",
-      "description": "Add feature state"
+      "description": "Add feature module"
+    },
+
+    "featurecomponent": {
+      "aliases": ["fc"],
+      "factory": "./src/feature-component",
+      "schema": "./src/feature-component/schema.json",
+      "description": "Add feature component"
     },
 
     "guard": {
