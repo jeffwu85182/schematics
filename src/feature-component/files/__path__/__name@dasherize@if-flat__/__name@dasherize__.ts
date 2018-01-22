@@ -7,7 +7,7 @@ import { Component, OnInit<% if(!!viewEncapsulation) { %>, ViewEncapsulation<% }
       <%= dasherize(name) %> works!
     </p>
   `,<% } else { %>
-  templateUrl: './<%= dasherize(name) %>.html',<% if(!!viewEncapsulation) { %>,
+  templateUrl: './<%= dasherize(name) %>.html',<% } if(!!viewEncapsulation) { %>,
   encapsulation: ViewEncapsulation.<%= viewEncapsulation %><% } if (changeDetection !== 'Default') { %>,
   changeDetection: ChangeDetectionStrategy.<%= changeDetection %><% } %>
 })
