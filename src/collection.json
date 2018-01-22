@@ -31,7 +31,7 @@
     "featurecomponent": {
       "aliases": ["fc"],
       "factory": "./feature-component",
-      "schema": "./src/feature-component/schema.json",
+      "schema": "./feature-component/schema.json",
       "description": "Add feature component"
     },
 
