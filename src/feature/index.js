@@ -30,10 +30,9 @@ function addDeclarationToNgModule(options) {
         var source = ts.createSourceFile(modulePath, sourceText, ts.ScriptTarget.Latest, true);
         var componentPath = "/" + options.sourceDir + "/" + options.path + "/" +
             (options.flat ? '' : stringUtils.dasherize(options.name) + '/') +
-            stringUtils.dasherize(options.name) +
-            '.component';
+            stringUtils.dasherize(options.name);
         var relativePath = find_module_1.buildRelativePath(modulePath, componentPath);
-        var classifiedName = stringUtils.classify(options.name + "Component");
+        var classifiedName = stringUtils.classify(options.name);
         // var declarationChanges = ast_utils_1.addDeclarationToModule(source, modulePath, classifiedName, relativePath);
         // var declarationRecorder = host.beginUpdate(modulePath);
         // for (var _i = 0, declarationChanges_1 = declarationChanges; _i < declarationChanges_1.length; _i++) {
@@ -52,7 +51,7 @@ function addDeclarationToNgModule(options) {
             var sourceText_1 = text_1.toString('utf-8');
             var source_1 = ts.createSourceFile(modulePath, sourceText_1, ts.ScriptTarget.Latest, true);
             var exportRecorder = host.beginUpdate(modulePath);
-            var exportChanges = ast_utils_1.addExportToModule(source_1, modulePath, stringUtils.classify(options.name + "Component"), relativePath);
+            var exportChanges = ast_utils_1.addExportToModule(source_1, modulePath, stringUtils.classify(options.name), relativePath);
             for (var _a = 0, exportChanges_1 = exportChanges; _a < exportChanges_1.length; _a++) {
                 var change = exportChanges_1[_a];
                 if (change instanceof change_1.InsertChange) {
@@ -80,10 +79,9 @@ function default_1(options) {
         options.selector = options.selector || buildSelector(options);
         options.path = options.path ? core_1.normalize(options.path) : options.path;
         options.module = find_module_1.findModuleFromOptions(host, options);
-        var componentPath = "/" + options.sourceDir + "/" + 'pages' + "/" +
+        var componentPath = "/" + options.sourceDir + "/" + 'features' + "/" +
             (options.flat ? '' : stringUtils.dasherize(options.name) + '/') +
-            stringUtils.dasherize(options.name) +
-            '.component';
+            stringUtils.dasherize(options.name);
         if (options.state) {
             var statePath = "/" + options.sourceDir + "/" + options.path + "/" + options.state;
             options.state = find_module_1.buildRelativePath(componentPath, statePath);

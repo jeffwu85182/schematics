@@ -7,13 +7,13 @@
       "path": {
         "type": "string",
         "description": "The path to create the component.",
-        "default": "app",
+        "default": "app/features",
         "visible": false
       },
       "sourceDir": {
         "type": "string",
         "description": "The path of the source directory.",
-        "default": "src",
+        "default": "src/app/features",
         "alias": "sd",
         "visible": false
       },
