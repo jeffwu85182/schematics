@@ -1,6 +1,6 @@
 {
   "name": "@ktbp/schematics",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "KTBP Schematics for Angular",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -10,6 +10,10 @@
   "keywords": [
     "schematics"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeffwu85182/schematics.git"
+  },
   "author": "Jeff Wu <crazy.alu@outlook.com>",
   "license": "MIT",
   "schematics": "./src/collection.json",
