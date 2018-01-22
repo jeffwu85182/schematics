@@ -6,11 +6,11 @@
   "properties": {
     "path": {
       "type": "string",
-      "default": "src/app/features"
+      "default": "features"
     },
     "sourceDir": {
       "type": "string",
-      "default": "src/app/features",
+      "default": "src/app",
       "alias": "sd"
     },
     "name": {
