@@ -23,7 +23,7 @@
 
     "feature": {
       "aliases": [ "f" ],
-      "factory": "feature",
+      "factory": "./feature",
       "schema": "./feature/schema.json",
       "description": "Add feature module"
     },
@@ -31,7 +31,7 @@
     "featurecomponent": {
       "aliases": ["fc"],
       "factory": "./feature-component",
-      "schema": "feature-component/schema.json",
+      "schema": "./src/feature-component/schema.json",
       "description": "Add feature component"
     },
 
