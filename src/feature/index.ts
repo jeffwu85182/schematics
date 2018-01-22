@@ -45,8 +45,7 @@ function addDeclarationToNgModule(options: ModuleOptions): Rule {
     const source = ts.createSourceFile(modulePath, sourceText, ts.ScriptTarget.Latest, true);
 
     const importModulePath = normalize(
-    //   `/${options.sourceDir}/${options.path}/`
-      `/app/features/`
+      `src/app/features/` +
       + (options.flat ? '' : stringUtils.dasherize(options.name) + '/')
       + stringUtils.dasherize(options.name)
       + '.module',

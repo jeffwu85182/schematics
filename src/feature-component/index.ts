@@ -107,7 +107,7 @@ export default function(options: ComponentOptions): Rule {
 
   return (host: Tree, context: SchematicContext) => {
     options.selector = options.selector || buildSelector(options);
-    options.path = options.path ? normalize(options.path) : options.path;
+    options.path = `/app/features${options.path ? normalize(options.path) : options.path}`;
     options.module = findModuleFromOptions(host, options);
 
     const templateSource = apply(url('./files'), [
