@@ -45,7 +45,8 @@ function addDeclarationToNgModule(options) {
     };
 }
 function default_1(options) {
-    options.path = `src/app/features${options.path ? core_1.normalize(options.path) : options.path}`;
+    // options.path = `src/app/features${options.path ? normalize(options.path) : options.path}`;
+    options.path = `app/features/`;
     const sourceDir = options.sourceDir;
     if (!sourceDir) {
         throw new schematics_1.SchematicsException(`sourceDir option is required.`);
