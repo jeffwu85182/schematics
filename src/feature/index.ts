@@ -45,7 +45,7 @@ function addDeclarationToNgModule(options: ModuleOptions): Rule {
     const source = ts.createSourceFile(modulePath, sourceText, ts.ScriptTarget.Latest, true);
 
     const importModulePath = normalize(
-      `src/app/features/` +
+      `/${options.sourceDir}/${options.path}/`
       + (options.flat ? '' : stringUtils.dasherize(options.name) + '/')
       + stringUtils.dasherize(options.name)
       + '.module',
@@ -70,7 +70,7 @@ function addDeclarationToNgModule(options: ModuleOptions): Rule {
 }
 
 export default function (options: ModuleOptions): Rule {
-  options.path = options.path ? normalize(options.path) : options.path;
+  options.path = `src/app/features${options.path ? normalize(options.path) : options.path}`;
   const sourceDir = options.sourceDir;
   if (!sourceDir) {
     throw new SchematicsException(`sourceDir option is required.`);

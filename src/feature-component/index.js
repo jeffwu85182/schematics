@@ -73,7 +73,7 @@ function default_1(options) {
     }
     return (host, context) => {
         options.selector = options.selector || buildSelector(options);
-        options.path = options.path ? core_1.normalize(options.path) : options.path;
+        options.path = `/app/features${options.path ? core_1.normalize(options.path) : options.path}`;
         options.module = find_module_1.findModuleFromOptions(host, options);
         const templateSource = schematics_1.apply(schematics_1.url('./files'), [
             options.spec ? schematics_1.noop() : schematics_1.filter(path => !path.endsWith('.spec.ts')),

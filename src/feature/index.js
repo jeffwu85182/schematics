@@ -26,9 +26,7 @@ function addDeclarationToNgModule(options) {
         }
         const sourceText = text.toString('utf-8');
         const source = ts.createSourceFile(modulePath, sourceText, ts.ScriptTarget.Latest, true);
-        const importModulePath = core_1.normalize(
-        //   `/${options.sourceDir}/${options.path}/`
-        `/app/features/`
+        const importModulePath = core_1.normalize(`/${options.sourceDir}/${options.path}/`
             + (options.flat ? '' : stringUtils.dasherize(options.name) + '/')
             + stringUtils.dasherize(options.name)
             + '.module');
@@ -47,7 +45,7 @@ function addDeclarationToNgModule(options) {
     };
 }
 function default_1(options) {
-    options.path = options.path ? core_1.normalize(options.path) : options.path;
+    options.path = `src/app/features${options.path ? core_1.normalize(options.path) : options.path}`;
     const sourceDir = options.sourceDir;
     if (!sourceDir) {
         throw new schematics_1.SchematicsException(`sourceDir option is required.`);
