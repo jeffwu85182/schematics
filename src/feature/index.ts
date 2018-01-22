@@ -70,7 +70,8 @@ function addDeclarationToNgModule(options: ModuleOptions): Rule {
 }
 
 export default function (options: ModuleOptions): Rule {
-  options.path = `src/app/features${options.path ? normalize(options.path) : options.path}`;
+  // options.path = `src/app/features${options.path ? normalize(options.path) : options.path}`;
+  options.path = `app/features/`;
   const sourceDir = options.sourceDir;
   if (!sourceDir) {
     throw new SchematicsException(`sourceDir option is required.`);
