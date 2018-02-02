@@ -11,7 +11,9 @@
 </div>
 <ktb-notification #notification></ktb-notification>
 <div *ngIf="isSuccess==true; else loadingFailed;" class="row">
-  <router-outlet></router-outlet>
+  <div class="col-md-12">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 <ng-template #loadingFailed>
   載入中...

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { KtbFeatureResources } from '@ktbService/ktb-feature-resources';
 import { CommonComponentsModule } from '@ktbComponent/common-components.module';
 import { TwdComponentsModule } from '@ktbComponent/twd-components.module';
 import { <%= classify(name) %> } from './<%= dasherize(name) %>';
@@ -13,7 +14,7 @@ import { SharedModule } from 'primeng/primeng';
 const routes: Routes = [
   {
     path: '',
-    component: <%= classify(name) %>,
+    component: FeatureLoader,
     children: []
   }
 ];
@@ -26,6 +27,6 @@ const routes: Routes = [
     SharedModule
   ],
   declarations: [FeatureLoader, <%= classify(name) %>],
-  providers: [FeatureManager]
+  providers: [FeatureManager, KtbFeatureResources]
 })
 export class <%= classify(name) %>Module {}
