@@ -8,63 +8,58 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * found in the LICENSE file at https://angular.io/license
  */
 // import { normalize } from '@angular-devkit/core';
-const schematics_1 = require("@angular-devkit/schematics");
-// import * as ts from 'typescript';
-const stringUtils = require("../strings");
-// import { addDeclarationToModule, addExportToModule } from '../utility/ast-utils';
-// import { InsertChange } from '../utility/change';
-// import { buildRelativePath, findModuleFromOptions } from '../utility/find-module';
+const ts = require("typescript");
 const find_module_1 = require("../utility/find-module");
-// function addDeclarationToNgModule(options: ComponentOptions): Rule {
-//   return (host: Tree) => {
-//     if (options.skipImport || !options.module) {
-//       return host;
-//     }
-//     const modulePath = options.module;
-//     const text = host.read(modulePath);
-//     if (text === null) {
-//       throw new SchematicsException(`File ${modulePath} does not exist.`);
-//     }
-//     const sourceText = text.toString('utf-8');
-//     const source = ts.createSourceFile(modulePath, sourceText, ts.ScriptTarget.Latest, true);
-//     const componentPath = `/${options.sourceDir}/${options.path}/`
-//                           + (options.flat ? '' : stringUtils.dasherize(options.name) + '/')
-//                           + stringUtils.dasherize(options.name);
-//     const relativePath = buildRelativePath(modulePath, componentPath);
-//     const classifiedName = stringUtils.classify(`${options.name}`);
-//     const declarationChanges = addDeclarationToModule(source,
-//                                                       modulePath,
-//                                                       classifiedName,
-//                                                       relativePath);
-//     const declarationRecorder = host.beginUpdate(modulePath);
-//     for (const change of declarationChanges) {
-//       if (change instanceof InsertChange) {
-//         declarationRecorder.insertLeft(change.pos, change.toAdd);
-//       }
-//     }
-//     host.commitUpdate(declarationRecorder);
-//     if (options.export) {
-//       // Need to refresh the AST because we overwrote the file in the host.
-//       const text = host.read(modulePath);
-//       if (text === null) {
-//         throw new SchematicsException(`File ${modulePath} does not exist.`);
-//       }
-//       const sourceText = text.toString('utf-8');
-//       const source = ts.createSourceFile(modulePath, sourceText, ts.ScriptTarget.Latest, true);
-//       const exportRecorder = host.beginUpdate(modulePath);
-//       const exportChanges = addExportToModule(source, modulePath,
-//                                               stringUtils.classify(`${options.name}`),
-//                                               relativePath);
-//       for (const change of exportChanges) {
-//         if (change instanceof InsertChange) {
-//           exportRecorder.insertLeft(change.pos, change.toAdd);
-//         }
-//       }
-//       host.commitUpdate(exportRecorder);
-//     }
-//     return host;
-//   };
-// }
+const change_1 = require("../utility/change");
+const ast_utils_1 = require("../utility/ast-utils");
+const schematics_1 = require("@angular-devkit/schematics");
+const stringUtils = require("../strings");
+const find_module_2 = require("../utility/find-module");
+function addDeclarationToNgModule(options) {
+    return (host) => {
+        if (options.skipImport || !options.module) {
+            return host;
+        }
+        const modulePath = options.module;
+        const text = host.read(modulePath);
+        if (text === null) {
+            throw new schematics_1.SchematicsException(`File ${modulePath} does not exist.`);
+        }
+        const sourceText = text.toString('utf-8');
+        const source = ts.createSourceFile(modulePath, sourceText, ts.ScriptTarget.Latest, true);
+        const componentPath = `/${options.sourceDir}/${options.path}/`
+            + ''
+            + stringUtils.dasherize(options.name);
+        const relativePath = find_module_1.buildRelativePath(modulePath, componentPath);
+        const classifiedName = stringUtils.classify(`${options.name}`);
+        const declarationChanges = ast_utils_1.addDeclarationToModule(source, modulePath, classifiedName, relativePath);
+        const declarationRecorder = host.beginUpdate(modulePath);
+        for (const change of declarationChanges) {
+            if (change instanceof change_1.InsertChange) {
+                declarationRecorder.insertLeft(change.pos, change.toAdd);
+            }
+        }
+        host.commitUpdate(declarationRecorder);
+        if (options.export) {
+            // Need to refresh the AST because we overwrote the file in the host.
+            const text = host.read(modulePath);
+            if (text === null) {
+                throw new schematics_1.SchematicsException(`File ${modulePath} does not exist.`);
+            }
+            const sourceText = text.toString('utf-8');
+            const source = ts.createSourceFile(modulePath, sourceText, ts.ScriptTarget.Latest, true);
+            const exportRecorder = host.beginUpdate(modulePath);
+            const exportChanges = ast_utils_1.addExportToModule(source, modulePath, stringUtils.classify(`${options.name}`), relativePath);
+            for (const change of exportChanges) {
+                if (change instanceof change_1.InsertChange) {
+                    exportRecorder.insertLeft(change.pos, change.toAdd);
+                }
+            }
+            host.commitUpdate(exportRecorder);
+        }
+        return host;
+    };
+}
 function buildSelector(options) {
     let selector = stringUtils.dasherize(options.name);
     if (options.prefix) {
@@ -79,20 +74,34 @@ function default_1(options) {
     }
     return (host, context) => {
         options.selector = options.selector || buildSelector(options);
-        options.path = `app/features/${options.path ? options.path.split('/')[1] : ''}/`;
-        options.module = find_module_1.findModuleFromOptions(host, options);
+        let componentName = '';
+        let componentFullName = options.name.split('-');
+        componentFullName.pop();
+        componentFullName.forEach(v => {
+            if (!componentName) {
+                componentName = v;
+            }
+            else {
+                componentName = componentName + '-' + v;
+            }
+        });
+        console.log(`componentName is ${componentName}`);
+        options.path = `app/features/${componentName}/`;
+        options.module = find_module_2.findModuleFromOptions(host, options);
         const templateSource = schematics_1.apply(schematics_1.url('./files'), [
             options.spec ? schematics_1.noop() : schematics_1.filter(path => !path.endsWith('.spec.ts')),
-            options.inlineStyle ? schematics_1.filter(path => !path.endsWith('.__styleext__')) : schematics_1.noop(),
+            options.inlineStyle
+                ? schematics_1.filter(path => !path.endsWith('.__styleext__'))
+                : schematics_1.noop(),
             options.inlineTemplate ? schematics_1.filter(path => !path.endsWith('.html')) : schematics_1.noop(),
-            schematics_1.template(Object.assign({}, stringUtils, { 'if-flat': (s) => options.flat ? '' : s }, options)),
-            schematics_1.move(sourceDir),
+            schematics_1.template(Object.assign({}, stringUtils, { 'if-flat': () => '' }, options)),
+            schematics_1.move(sourceDir)
         ]);
         return schematics_1.chain([
             schematics_1.branchAndMerge(schematics_1.chain([
-                // addDeclarationToNgModule(options),
-                schematics_1.mergeWith(templateSource),
-            ])),
+                addDeclarationToNgModule(options),
+                schematics_1.mergeWith(templateSource)
+            ]))
         ])(host, context);
     };
 }

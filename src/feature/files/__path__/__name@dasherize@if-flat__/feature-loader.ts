@@ -1,8 +1,7 @@
-import { Component, OnInit, DoCheck, ViewChild, ViewEncapsulation } from '@angular/core';
-import { BankInfoClient } from '@service/ktbpib-proxygen';
-import { HandleApiCall } from '@service/handle-api-call';
-import { KtbNotificationLevel } from '@component/ktb-notification/ktb-notification';
-import { KtbNotification } from '@component/ktb-notification/ktb-notification';
+import { Component, OnInit, DoCheck, ViewChild } from '@angular/core';
+import { BankInfoClient } from '@ktbService/ktbpib-proxygen';
+import { HandleApiCall } from '@ktbService/handle-api-call';
+import { KtbNotificationLevel, KtbNotification } from '@ktbComponent/ktb-notification/ktb-notification';
 import { MenuItem } from 'primeng/components/common/menuitem';
 import { Observable } from 'rxjs/Observable';
 import { FeatureManager } from './feature-manager';
@@ -11,10 +10,7 @@ import { FeatureManager } from './feature-manager';
 
 @Component({
   selector: 'feature-loader',
-  templateUrl: './feature-loader.html',
-  styleUrls: ['./<%= dasherize(name) %>.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [BankInfoClient]
+  templateUrl: './feature-loader.html'
 })
 export class FeatureLoader implements OnInit {
   @ViewChild('notification') notification: KtbNotification;
@@ -23,7 +19,6 @@ export class FeatureLoader implements OnInit {
 
   constructor(
     private fm: FeatureManager,
-    private bankInfoClient: BankInfoClient,
     private handleApiCall: HandleApiCall
   ) {
   }
@@ -31,11 +26,8 @@ export class FeatureLoader implements OnInit {
   ngOnInit() {
     this.fm.init();
     this.steps = [{ label: 'Step1' }, { label: 'Step2' }, { label: 'Step3' }];
-    this.fm.loadFeature().then(res => {
-      this.initResources();
+    this.fm.loadFeature().subscribe(res => {
+      this.isSuccess = true;
     });
-  }
-
-  initResources() {
   }
 }
