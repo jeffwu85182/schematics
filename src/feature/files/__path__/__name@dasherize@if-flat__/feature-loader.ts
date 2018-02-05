@@ -1,5 +1,4 @@
 import { Component, OnInit, DoCheck, ViewChild } from '@angular/core';
-import { BankInfoClient } from '@ktbService/ktbpib-proxygen';
 import { HandleApiCall } from '@ktbService/handle-api-call';
 import { KtbNotificationLevel, KtbNotification } from '@ktbComponent/ktb-notification/ktb-notification';
 import { MenuItem } from 'primeng/components/common/menuitem';
@@ -16,6 +15,7 @@ export class FeatureLoader implements OnInit {
   @ViewChild('notification') notification: KtbNotification;
   steps: MenuItem[];
   isSuccess: boolean;
+  featureName = this.fm.featureName;
 
   constructor(
     private fm: FeatureManager,
