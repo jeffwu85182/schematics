@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { KtbFeatureResources } from '@ktbService/ktb-feature-resources';
 import { CommonComponentsModule } from '@ktbComponent/common-components.module';
-import { TwdComponentsModule } from '@ktbComponent/twd-components.module';
 import { <%= classify(name) %> } from './<%= dasherize(name) %>';
 import { FeatureLoader } from './feature-loader';
 import { FeatureManager } from './feature-manager';
