@@ -1,6 +1,6 @@
 {
   "name": "@ktbp/schematics",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "KTBP Schematics for Angular",
   "scripts": {
     "build": "tsc -p tsconfig.json",
