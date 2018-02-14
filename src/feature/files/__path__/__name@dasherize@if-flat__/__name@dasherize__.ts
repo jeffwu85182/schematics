@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FeatureManager } from './feature-manager';
 
 @Component({
   selector: '<%= dasherize(name) %>',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class <%= classify(name) %> implements OnInit {
 
-  constructor() {}
+  constructor(private fm: FeatureManager) {}
 
   ngOnInit() {}
 }

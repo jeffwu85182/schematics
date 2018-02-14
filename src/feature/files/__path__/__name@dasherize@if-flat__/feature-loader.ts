@@ -1,8 +1,12 @@
 import { Component, OnInit, DoCheck, ViewChild } from '@angular/core';
+import { MenuItem } from 'primeng/components/common/menuitem';
 import { HandleApiCall } from '@ktbService/handle-api-call';
 import { KtbNotificationLevel, KtbNotification } from '@ktbComponent/ktb-notification/ktb-notification';
-import { MenuItem } from 'primeng/components/common/menuitem';
 import { Observable } from 'rxjs/Observable';
+import {
+  ContentTypeReq,
+  ContentTypeReqContentType
+} from '@ktbService/ktbpib-proxygen';
 import { FeatureManager } from './feature-manager';
 
 
@@ -26,7 +30,12 @@ export class FeatureLoader implements OnInit {
   ngOnInit() {
     this.fm.init();
     this.steps = [{ label: 'Step1' }, { label: 'Step2' }, { label: 'Step3' }];
-    this.fm.loadFeature().subscribe(res => {
+    const additionalTypes = [
+      new ContentTypeReq({
+        // ContentType: ContentTypeReqContentType.XXXXX
+      })
+    ];
+    this.fm.loadFeature(additionalTypes).subscribe(res => {
       this.isSuccess = true;
     });
   }
