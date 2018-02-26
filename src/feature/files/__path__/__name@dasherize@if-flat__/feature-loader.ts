@@ -19,7 +19,6 @@ export class FeatureLoader implements OnInit {
   @ViewChild('notification') notification: KtbNotification;
   steps: MenuItem[];
   isSuccess: boolean;
-  featureName = this.fm.featureName;
 
   constructor(
     private fm: FeatureManager,
@@ -28,7 +27,6 @@ export class FeatureLoader implements OnInit {
   }
 
   ngOnInit() {
-    this.fm.init();
     this.steps = [{ label: 'Step1' }, { label: 'Step2' }, { label: 'Step3' }];
     const additionalTypes = [
       new ContentTypeReq({
@@ -36,6 +34,7 @@ export class FeatureLoader implements OnInit {
       })
     ];
     this.fm.loadFeature(additionalTypes).subscribe(res => {
+      this.fm.init();
       this.isSuccess = true;
     });
   }
