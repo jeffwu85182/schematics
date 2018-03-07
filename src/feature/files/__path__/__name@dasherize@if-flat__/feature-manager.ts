@@ -4,8 +4,7 @@ import { KtbFeatureManager } from '@ktbService/ktb-feature-manager';
 
 @Injectable()
 export class FeatureManager extends KtbFeatureManager {
-    // 提供BasePage存取featureId
-    featureId = "KTBPIB.<%= classify(name) %>";
+    featureId = 'KTBPIB.<%= classify(name) %>';
     // Feature-scope共用資源
     allBankInfo: any; // 所有銀行代碼
 
