@@ -70,17 +70,8 @@ import { Schema as ModuleOptions } from './schema';
 // }
 
 export default function (options: ModuleOptions): Rule {
-     let componentName = '';
-    let componentFullName = options.name.split('-');
-    componentFullName.pop();
-    componentFullName.forEach(v => {
-      if (!componentName) {
-          componentName = v;
-      } else {
-      componentName = componentName + '-' + v;
-      }
-  });
-  options.path = `pages/${componentName}/`;
+    // options.path = `src/app/features${options.path ? normalize(options.path) : options.path}`;
+    options.path = `pages/`;
   const sourceDir = options.sourceDir;
   if (!sourceDir) {
     throw new SchematicsException(`sourceDir option is required.`);
