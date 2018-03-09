@@ -34,6 +34,18 @@
       "schema": "./feature-component/schema.json",
       "description": "Add feature component"
     },
+    "ionicfeature": {
+      "aliases": [ "if" ],
+      "factory": "./ionic-feature",
+      "schema": "./ionic-feature/schema.json",
+      "description": "Add feature module"
+    },
+    "ionicfeaturecomponent": {
+      "aliases": ["ifc"],
+      "factory": "./ionic-feature-component",
+      "schema": "./ionic-feature-component/schema.json",
+      "description": "Add feature component"
+    },
 
     "guard": {
       "aliases": [ "g" ],
