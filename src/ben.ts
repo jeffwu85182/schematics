@@ -20,7 +20,7 @@ export function dshNameWithTrimLast(name: string): string {
         if (!newName) {
             newName = v;
         } else {
-            newName = newName + '.' + v;
+            newName = newName + '-' + v;
         }
     });
     return strUtility.dasherize(newName);
