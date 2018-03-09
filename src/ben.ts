@@ -7,7 +7,7 @@ export function clsNameWithTrimLast(name: string): string {
         if (!newName) {
             newName = v;
         } else {
-            newName = newName + '.' + v;
+            newName = newName  + v;
         }
     });
     return strUtility.classify(newName);

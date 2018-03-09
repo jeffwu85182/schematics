@@ -10,7 +10,7 @@ function clsNameWithTrimLast(name) {
             newName = v;
         }
         else {
-            newName = newName + '.' + v;
+            newName = newName + v;
         }
     });
     return strUtility.classify(newName);
