@@ -6,12 +6,9 @@ import { KtbFeatureManager } from '../../service/ktb-feature-manager';
 
 @Injectable()
 export class <%= classify(name) %>FeatureManager extends KtbFeatureManager {
-  //提供BasePage存取featureId
   get featureId(): string {
     return KTBPIBFeatures.<%= classify(name) %>;
   }
-
-
   //Feature步驟設定
   _pageSettings: any = [
   ];
