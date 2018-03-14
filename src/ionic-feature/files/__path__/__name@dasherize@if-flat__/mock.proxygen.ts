@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { timer } from 'rxjs/observable/timer';
 
+import { AjaxResponse } from '../../service/ktbpib-proxygen';
 @Injectable()
 export class Mock<%= classify(name) %>Client {
    /**
@@ -11,12 +12,15 @@ export class Mock<%= classify(name) %>Client {
    * @returns {Observable<any>} 請將假資料放在註解的地方
    * @memberof Mock<%= classify(name) %>Client
    */
-  query(req?: any): Observable<any> {
-    return timer(1000).map(_ => ({
+  query(req?: any): Observable<AjaxResponse> {
+    return timer(1000).map(_ => (new AjaxResponse({
+
       // 以下為查詢結果假資料
-      helloWorld: 'hello'
+      Success: true,
+      Result: []
       // 以上為查詢結果假資料
-    }));
+
+    })));
   }
 
   /**

@@ -9,7 +9,7 @@ export class <%= classify(name) %>FeatureManager extends KtbFeatureManager {
   get featureId(): string {
     return KTBPIBFeatures.<%= classify(name) %>;
   }
-  //Feature步驟設定
+
   _pageSettings: any = [
   ];
   constructor(app: App, public injector: Injector) {
