@@ -1,6 +1,6 @@
 {
   "name": "@ktbp/schematics",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "KTBP Schematics for Angular",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -23,7 +23,7 @@
     "@types/jasmine": "^2.6.0",
     "@types/node": "^8.0.31",
     "jasmine": "^2.8.0",
-    "typescript": "^2.5.2"
+    "typescript": "^2.9.2"
   },
   "private": false
 }
