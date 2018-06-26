@@ -6,7 +6,6 @@ import { KtbFeatureManager } from '@ktbService/ktb-feature-manager';
 export class FeatureManager extends KtbFeatureManager {
     featureId = 'KTBPIB.<%= classify(name) %>';
     // Feature-scope共用資源
-    allBankInfo: any; // 所有銀行代碼
 
     constructor(
         injector: Injector,
