@@ -1,27 +1,25 @@
-import { Component, OnInit, DoCheck, ViewChild } from "@angular/core";
-import { MenuItem } from "primeng/components/common/menuitem";
+import { Component, OnInit, DoCheck, ViewChild } from '@angular/core';
+import { MenuItem } from 'primeng/components/common/menuitem';
 import {
   KtbNotificationLevel,
   KtbNotification
-} from "@ktbComponent/ktb-notification/ktb-notification";
+} from '@ktbComponent/ktb-notification/ktb-notification';
 import {
   ContentTypeReq,
   ContentTypeReqContentType
-} from "@ktbService/ktbpib-proxygen";
-import { FeatureManager } from "./feature-manager";
+} from '@ktbService/ktbpib-proxygen';
+import { FeatureManager } from './feature-manager';
 
 @Component({
-  selector: "feature-loader",
-  templateUrl: "../feature-loader.html"
+  selector: 'feature-loader',
+  templateUrl: '../feature-loader.html'
 })
 export class FeatureLoader implements OnInit {
-  @ViewChild("notification") notification: KtbNotification;
+  @ViewChild('notification') notification: KtbNotification;
   steps: MenuItem[];
   isSuccess: boolean;
 
-  constructor(
-    private fm: FeatureManager
-  ) {}
+  constructor(private fm: FeatureManager) {}
 
   ngOnInit() {
     const additionalTypes = [
